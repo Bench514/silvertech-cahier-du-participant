@@ -1,13 +1,30 @@
 /**
- * Protection par mot de passe partagé (Cloudflare Pages Functions).
+ * Worker Cloudflare : protection par mot de passe partagé devant les fichiers statiques (dist/).
  *
- * Variable d'environnement requise : CAHIER_PASSWORD
+ * Variable requise : CAHIER_PASSWORD (type « Secret »).
  * Sans elle, le site refuse tout accès (échec fermé).
  * Changer le mot de passe invalide automatiquement toutes les sessions ouvertes.
  */
 
 interface Env {
   CAHIER_PASSWORD?: string;
+  ASSETS: Fetcher;
+}
+
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "X-Frame-Options": "DENY",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+  "Content-Security-Policy":
+    "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+  "X-Robots-Tag": "noindex, nofollow",
+};
+
+function withSecurity(res: Response, extra: Record<string, string> = {}): Response {
+  const out = new Response(res.body, res);
+  for (const [k, v] of Object.entries({ ...SECURITY_HEADERS, ...extra })) out.headers.set(k, v);
+  return out;
 }
 
 const COOKIE = "cahier_auth";
@@ -69,18 +86,16 @@ ${error ? '<div class="err" role="alert">Mot de passe incorrect. Veuillez réess
 </form>
 <small>Confidentiel · pour discussion seulement</small>
 </main></body></html>`;
-  return new Response(html, {
-    status,
-    headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" },
-  });
+  return withSecurity(new Response(html, { status, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } }));
 }
 
 const safeNext = (n: string | null) => (n && n.startsWith("/") && !n.startsWith("//") && !n.startsWith("/__login") ? n : "/");
 
-export const onRequest: PagesFunction<Env> = async ({ request, env, next }) => {
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
   const password = env.CAHIER_PASSWORD;
   if (!password) {
-    return new Response("Accès non configuré : la variable CAHIER_PASSWORD est manquante.", { status: 503, headers: { "Cache-Control": "no-store" } });
+    return withSecurity(new Response("Accès non configuré : la variable CAHIER_PASSWORD est manquante.", { status: 503, headers: { "Cache-Control": "no-store" } }));
   }
 
   const url = new URL(request.url);
@@ -91,14 +106,14 @@ export const onRequest: PagesFunction<Env> = async ({ request, env, next }) => {
     const given = String(form.get("password") ?? "");
     const target = safeNext(String(form.get("next") ?? "/"));
     if (safeEqual(await token(given), expected)) {
-      return new Response(null, {
+      return withSecurity(new Response(null, {
         status: 303,
         headers: {
           Location: target,
           "Set-Cookie": `${COOKIE}=${expected}; Path=/; Max-Age=${MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
           "Cache-Control": "no-store",
         },
-      });
+      }));
     }
     await new Promise((r) => setTimeout(r, 800)); // ralentit les essais en rafale
     return loginPage(target, true);
@@ -106,12 +121,9 @@ export const onRequest: PagesFunction<Env> = async ({ request, env, next }) => {
 
   const cookie = readCookie(request, COOKIE);
   if (cookie && safeEqual(cookie, expected)) {
-    const res = await next();
-    const out = new Response(res.body, res);
-    out.headers.set("X-Robots-Tag", "noindex, nofollow");
-    out.headers.set("Cache-Control", "private, no-cache");
-    return out;
+    return withSecurity(await env.ASSETS.fetch(request), { "Cache-Control": "private, no-cache" });
   }
 
   return loginPage(safeNext(url.pathname + url.search), false);
-};
+  },
+} satisfies ExportedHandler<Env>;
