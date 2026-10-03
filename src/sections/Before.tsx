@@ -1,5 +1,5 @@
-import { AGENDA, PEOPLE, TOC } from "../content";
-import { Reveal } from "../components/ui";
+import { AGENDA, EXPECTATIONS, NETWORK_PROMPTS, PEOPLE, READING_QUESTIONS, TOC, UPCOMING_DECISIONS } from "../content";
+import { Discuss, Reveal } from "../components/ui";
 import { goTo } from "../components/Nav";
 import { useNotes } from "../notes";
 
@@ -21,15 +21,25 @@ export default function Before() {
               <p>Ce cahier réunit l'information essentielle pour préparer la rencontre, afin que vous puissiez questionner, orienter et décider en toute connaissance de cause. Les annexes sont à votre disposition pour approfondir les sujets qui vous intéressent.</p>
               <p>Nous vous remercions de votre engagement et sommes honorés de pouvoir compter sur votre contribution.</p>
             </div>
-            <aside className="tips">
-              <h4>Pour naviguer</h4>
-              <ul>
-                <li><b>Table des matières</b> à gauche : elle suit votre lecture.</li>
-                <li><b>Ctrl ou Cmd + K</b> pour chercher un mot dans tout le cahier.</li>
-                <li><b>Garder pour la discussion</b> sur les questions que vous voulez aborder.</li>
-                <li><b>Mon carnet</b> pour noter vos idées. Elles restent sur votre appareil : pensez à les exporter.</li>
-              </ul>
-              <button className="btn" onClick={() => openPanel()}>Ouvrir mon carnet</button>
+            <aside className="practical">
+              <div>
+                <b>En pratique</b>
+                Temps de lecture estimé : 45 minutes. N'hésitez pas à annoter le document : le bouton « Note » à côté de chaque titre ouvre votre carnet.
+              </div>
+              <div className="disc">
+                <b>Pour discussion</b>
+                Les sections où nous souhaitons particulièrement mobiliser votre apport sont indiquées. Ce sont des éléments sur lesquels nous souhaitons vos avis et vos idées.
+              </div>
+              <div className="tips">
+                <h4>Pour naviguer</h4>
+                <ul>
+                  <li><b>Table des matières</b> : elle suit votre lecture.</li>
+                  <li><b>Ctrl ou Cmd + K</b> pour chercher un mot dans tout le cahier.</li>
+                  <li><b>Garder pour la discussion</b> sur les questions que vous voulez aborder.</li>
+                  <li><b>Mon carnet</b> garde vos notes sur votre appareil : pensez à les exporter.</li>
+                </ul>
+                <button className="btn" onClick={() => openPanel()}>Ouvrir mon carnet</button>
+              </div>
             </aside>
           </div>
         </Reveal>
@@ -45,9 +55,25 @@ export default function Before() {
             </Reveal>
           ))}
         </ol>
-        <Reveal>
-          <h4 className="h4">Points à adresser</h4>
-          <div className="todo">Les trois points à adresser lors de la rencontre seront ajoutés ici avant l'envoi du cahier.</div>
+      </section>
+
+      <section id="attentes" data-sec="attentes" data-title="Ce que nous attendons de vous" className="sub">
+        <Reveal><h2 className="h2">Ce que nous attendons de vous</h2></Reveal>
+        <div className="expect">
+          {EXPECTATIONS.map(([t, d], i) => (
+            <Reveal key={t} delay={i * 90} className="expect-card"><span>{i + 1}</span><div><h4>{t}</h4><p>{d}</p></div></Reveal>
+          ))}
+        </div>
+        <Reveal className="decisions">
+          <span className="tag">Pour le conseil d'administration</span>
+          <h4 className="h4" style={{ marginTop: 0 }}>Les décisions des prochains mois</h4>
+          <p>Voici les décisions qui seront soumises au CA au cours des prochains mois. Cette rencontre vise à poursuivre la réflexion et à préparer le terrain.</p>
+          <ul className="ticks">{UPCOMING_DECISIONS.map((d) => <li key={d}>{d}</li>)}</ul>
+        </Reveal>
+        <Discuss id="q-lecture" section="Ce que nous attendons de vous" title="Questions pour guider la lecture" questions={READING_QUESTIONS} />
+        <Reveal className="guide-card alt">
+          <h4>Réseau et opportunités</h4>
+          <ul>{NETWORK_PROMPTS.map((p) => <li key={p}>{p}</li>)}</ul>
         </Reveal>
       </section>
 

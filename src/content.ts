@@ -4,7 +4,8 @@ export const META = {
   date: "5 octobre 2026",
   time: "10 h à 12 h",
   place: "Musée d'art de Joliette",
-  version: "Version du 30 septembre 2026 · Ariane",
+  version: "Version du 2 octobre 2026",
+  footer: "Cahier des participant·e·s · CA & comité aviseur · 5 octobre 2026",
   confidential: "Confidentiel · pour discussion seulement",
 };
 
@@ -18,6 +19,7 @@ export const TOC: TocItem[] = [
     children: [
       { id: "bienvenue", num: "", title: "Bienvenue" },
       { id: "ordre", num: "", title: "Ordre du jour" },
+      { id: "attentes", num: "", title: "Ce que nous attendons de vous" },
       { id: "personnes", num: "", title: "Personnes présentes" },
     ],
   },
@@ -42,12 +44,12 @@ export const TOC: TocItem[] = [
       { id: "s2-3", num: "2.3", title: "Les participant·e·s" },
       { id: "s2-4", num: "2.4", title: "Notre promesse" },
       { id: "s2-5", num: "2.5", title: "Les technologies déployées" },
-      { id: "s2-6", num: "2.6", title: "Le cycle de vie" },
-      { id: "s2-7", num: "2.7", title: "Le parcours d'un participant" },
-      { id: "s2-8", num: "2.8", title: "Nos principes éthiques" },
-      { id: "s2-9", num: "2.9", title: "Le paysage concurrentiel" },
-      { id: "s2-10", num: "2.10", title: "Notre feuille de route" },
-      { id: "s2-11", num: "2.11", title: "Les mesures d'impact" },
+      { id: "s2-6", num: "2.6", title: "Le service au quotidien" },
+      { id: "s2-7", num: "2.7", title: "Les mesures d'impact" },
+      { id: "s2-8", num: "2.8", title: "Le parcours d'un participant" },
+      { id: "s2-9", num: "2.9", title: "Nos principes éthiques" },
+      { id: "s2-10", num: "2.10", title: "Le paysage concurrentiel" },
+      { id: "s2-11", num: "2.11", title: "Notre feuille de route" },
       { id: "s2-12", num: "2.12", title: "Nos apprentissages" },
       { id: "s2-13", num: "2.13", title: "Un comité à créer" },
       { id: "s2-14", num: "2.14", title: "Votre regard nous serait précieux" },
@@ -56,9 +58,11 @@ export const TOC: TocItem[] = [
   {
     id: "annexes", num: "3", title: "Annexes",
     children: [
-      { id: "annexe-a", num: "A", title: "Le modèle SilverTech en détail" },
-      { id: "annexe-b", num: "B", title: "L'étalonnage en détail" },
-      { id: "annexe-c", num: "C", title: "Document d'adhésion des Innovateurs" },
+      { id: "annexe-a", num: "A", title: "Le modèle SilverTech" },
+      { id: "annexe-b", num: "B", title: "L'étalonnage" },
+      { id: "annexe-c", num: "C", title: "Cahier de jeux de la maturité organisationnelle à innover" },
+      { id: "annexe-d", num: "D", title: "Besoins prioritaires cliniques" },
+      { id: "annexe-e", num: "E", title: "Capacités d'affaires" },
     ],
   },
 ];
@@ -72,6 +76,33 @@ export const AGENDA = [
   ["Discussion et échanges", ""],
   ["Présentation des prochaines étapes", ""],
   ["Mot de clôture", ""],
+];
+
+export const EXPECTATIONS = [
+  ["Un regard indépendant et critique", "Vos questions et vos réserves nous sont aussi utiles que votre appui."],
+  ["Pour le conseil d'administration", "Identifier et préparer les décisions à prendre, sous l'angle de la saine gouvernance, des risques et de la pérennité du Centre."],
+  ["Pour le comité aviseur", "Éclairer le CA et l'équipe sur les orientations, les angles morts et les conditions de succès."],
+];
+
+export const UPCOMING_DECISIONS = [
+  "Adoption des règlements généraux",
+  "Politique sur les conflits d'intérêts",
+  "Grille tarifaire du membership et sa clause de révision",
+  "Charte de classification des technologies (niveaux ST)",
+  "Entente de mandat entre le Centre et la Fondation Famille Bordeleau",
+  "Création du comité de participants et de proches aidants",
+];
+
+export const READING_QUESTIONS = [
+  "Sous l'angle de votre expertise, qu'est-ce qui vous semble solide, et qu'est-ce qui vous semble fragile ou incomplet?",
+  "Dans quelles dimensions du projet votre champ de compétence pourrait-il faire la plus grande différence?",
+  "Quels risques ou enjeux devrions-nous anticiper dès maintenant?",
+  "Qu'est-ce qui renforcerait la crédibilité et l'indépendance du Centre auprès des entreprises, des milieux de vie et du réseau public?",
+];
+
+export const NETWORK_PROMPTS = [
+  "Pensez à 2 ou 3 personnes, organisations ou instances qu'il serait utile pour le Centre de connaître ou de rencontrer dans les prochains mois.",
+  "Signalez-nous toute occasion où le Centre gagnerait à être présent : programme de financement, appel à projets, événement, chantier gouvernemental ou de recherche.",
 ];
 
 export const PEOPLE = [
@@ -151,7 +182,7 @@ export const FOUR_P = [
 ];
 
 export const OFFERS = [
-  { n: 1, trl: [3, 6] as [number, number], title: "Soutien au développement", who: "Entreprises technologiques", market: "150 à 200 entreprises" },
+  { n: 1, trl: [3, 5] as [number, number], title: "Soutien au développement", who: "Entreprises technologiques", market: "150 à 200 entreprises" },
   { n: 2, trl: [6, 8] as [number, number], title: "Évaluation des technologies", who: "Entreprises technologiques", market: "150 à 200 entreprises" },
   { n: 3, trl: [8, 8] as [number, number], title: "Aide au choix des technologies", who: "RPA", market: "Plus de 3 000 milieux au Canada" },
   { n: 4, trl: [9, 9] as [number, number], title: "Aide à l'implantation et à l'intégration", who: "Entreprises et RPA", market: "Plus de 3 000 milieux au Canada" },
@@ -170,7 +201,7 @@ export const DIMENSIONS = [
   "Capacité d'intégration dans l'environnement existant (personnel, techno., maintenance, physique, etc.)",
   "Coût total de possession sur l'ensemble du cycle de vie (TCO)",
   "Capacité de vente",
-  "Pérennité du modèle d'affaires pour le RPA/résident (ROI)",
+  "Pérennité du modèle d'affaires pour la RPA et le résident (ROI)",
   "Cybersécurité, protection de la vie privée et souveraineté numérique",
   "Résilience de la chaîne d'approvisionnement",
   "Risque légal (assurabilité)",
@@ -263,7 +294,9 @@ export const FICHES: Fiche[] = [
   {
     id: "fondation", name: "Fondation Famille Bordeleau", logo: "fondation", badge: "Taux forfaitaire préférentiel",
     blocks: [
+      ["L'organisation", "Maître d'œuvre de RPA à la maison; elle offre le service gratuitement aux participants, avec l'appui de la Caisse Desjardins de Joliette et du Centre de Lanaudière."],
       ["Le projet", "RPA à la maison, projet-phare de SilverTech. En cours."],
+      ["Rôle de SilverTech", "Évaluation indépendante, choix et intégration des technologies, protocoles et mesure des résultats."],
       ["Détails", "Voir la section 2."],
     ],
   },
@@ -281,7 +314,7 @@ export const FAMILIES = [
   {
     id: "innovateurs", name: "Innovateurs", vote: false, tagline: "Les entreprises qui développent les technologies de demain pour les aînés.",
     rows: [
-      ["Droits", "Membres associés, sans droit de vote, pour préserver la neutralité de l'évaluation; voix consultative au sein du comité des Innovateurs."],
+      ["Droits", "Membres associés, sans droit de vote à l'assemblée générale, pour préserver la neutralité de l'évaluation; voix consultative au sein du comité des Innovateurs."],
     ],
     advantages: [
       "Revue officielle du niveau de maturité technologique (TRL) de leur solution",
@@ -309,7 +342,7 @@ export const FAMILIES = [
     id: "milieux", name: "Milieux de vie", vote: true, tagline: "Les milieux qui accueillent les aînés et adoptent les technologies.",
     rows: [
       ["Qui", "RPA, ressources intermédiaires et CHSLD."],
-      ["Droits", "Droit de vote; un siège au CA."],
+      ["Droits", "Droit de vote; un siège au CA pour l'ensemble de la famille Milieux de vie."],
     ],
     advantages: [
       "Accès aux services du CEST à tarif préférentiel",
@@ -349,19 +382,26 @@ export const IN_CONSTRUCTION = [
 export const WHY_STRUCTURE = [
   ["La neutralité d'abord.", "Un évaluateur ne peut pas être gouverné par les entreprises qu'il évalue : les Innovateurs participent, mais ne votent pas."],
   ["La mission protégée pendant le démarrage.", "Les Fondateurs orientent les cinq premières années, avec une transition prévue vers un CA plus ouvert."],
-  ["Une vraie voix pour les milieux de vie.", "Les RPA votent et font contrepoids, ce qui renforce la crédibilité du Centre."],
+  ["Une vraie voix pour les milieux de vie.", "Les RPA votent à l'assemblée générale annuelle et font contrepoids, ce qui renforce la crédibilité du Centre."],
   ["Des revenus récurrents", "qui ne dépendent jamais des ventes des entreprises évaluées."],
 ];
 
+export const MEMBERSHIP_QUESTIONS = [
+  "Comment éviter de nous engager trop longtemps sur une grille tarifaire que nous pourrions devoir ajuster : engagement d'un an, clause de révision annuelle?",
+  "Les frais de renouvellement sont-ils trop bas pour soutenir le Centre dans la durée?",
+  "Que pensez-vous des trois familles et de leurs paliers?",
+  "Quelles balises vous sembleraient nécessaires pour garantir la neutralité du Centre face à ses Fondateurs?",
+];
+
 export const THEMES = [
-  ["Autonomie et indépendance", "Doter les aînés d'outils et de technologies leur permettant de conserver leur autonomie et leur indépendance, même en cas de déficience, de handicap ou de maladie.", "Des capteurs discrets et une équipe humaine aident la personne à rester chez elle, à son rythme."],
-  ["Maintien des liens et rester connecté", "Être connecté permet de renforcer les liens sociaux, mais aussi d'assurer la communication entre les prestataires de soins et services, ainsi qu'entre les aînés, leurs intervenants et leur communauté.", "Les proches et les intervenants sont informés et coordonnés autour de la même personne."],
-  ["Milieux de vie et communautés de soutien", "Les aînés vieilliront dans une variété de contextes et de communautés qui peuvent tous bénéficier d'améliorations en matière d'adaptation aux besoins des personnes âgées, de modèles de services offerts et de technologies intégrées.", "Le projet teste, auprès de personnes vivant seules à domicile, un modèle inspiré de la résidence pour aînés."],
-  ["Les soins de santé et les prestations de services de santé", "Les défis en matière de soins de santé sont nombreux, mais les possibilités offertes par la technologie pour soutenir la prestation de services de soins de santé ou pour assurer un suivi et agir en tant qu'outil de prévention, le sont tout autant.", "La détection des chutes et des signes de détérioration permet d'intervenir avant l'urgence."],
+  ["Autonomie et indépendance", "Doter les aînés d'outils et de technologies leur permettant de conserver leur autonomie et leur indépendance, même en cas de déficience, de handicap ou de maladie."],
+  ["Maintien des liens et rester connecté", "Être connecté permet de renforcer les liens sociaux, mais aussi d'assurer la communication entre les prestataires de soins et services, ainsi qu'entre les aînés, leurs intervenants et leur communauté."],
+  ["Milieux de vie et communautés de soutien", "Les aînés vieilliront dans une variété de contextes et de communautés qui peuvent tous bénéficier d'améliorations en matière d'adaptation aux besoins des personnes âgées, de modèles de services offerts et de technologies intégrées."],
+  ["Les soins de santé et les prestations de services de santé", "Les défis en matière de soins de santé sont nombreux, mais les possibilités offertes par la technologie pour soutenir la prestation de services de soins de santé ou pour assurer un suivi et agir en tant qu'outil de prévention, le sont tout autant."],
 ];
 
 export const PROMISE = [
-  ["Détecter", "de petits capteurs discrets observent les habitudes de vie, sans caméra, sans micro et sans enregistrement."],
+  ["Détecter", "de petits capteurs discrets observent les habitudes de vie, sans caméra ni micro, et sans enregistrement audio ou vidéo."],
   ["Alerter", "la technologie repère les changements dans les habitudes de vie avant qu'une situation devienne critique."],
   ["Accompagner", "une personne dédiée ajuste le plan d'accompagnement et tient les proches informés. La personne n'est jamais seule."],
 ];
@@ -369,7 +409,7 @@ export const PROMISE = [
 export const LIFECYCLE = [
   ["Détection continue", "Détection des chutes et des mouvements, sans caméra et sans appareil à porter."],
   ["Analyse prédictive", "Des algorithmes repèrent les changements dans les habitudes de vie, à partir des données historiques et du temps réel."],
-  ["Alerte graduée", "Signal faible : visite préventive. Signal critique : urgence, 811 ou 911."],
+  ["Alerte graduée", "Signal faible : visite préventive. Signal critique : orientation immédiate vers le 811 ou le 911."],
   ["Intervention", "Infirmière, préposé, ergothérapeute et gérontologue interviennent."],
   ["Maintien à domicile", "Autonomie préservée, qualité de vie et sécurité."],
 ];
@@ -392,7 +432,7 @@ export const JOURNEY = [
 export const ETHICS = [
   ["Un consentement éclairé", "Chaque participant reçoit une explication complète du projet, de ses technologies et de ses limites, et peut poser toutes ses questions avant de signer."],
   ["La liberté de se retirer", "La personne peut quitter le projet en tout temps, sans aucune conséquence sur les services qu'elle reçoit habituellement."],
-  ["Le respect de l'intimité", "Les capteurs ne comportent ni caméra, ni micro, ni enregistrement. On entre au domicile seulement avec le consentement de la personne."],
+  ["Le respect de l'intimité", "Les capteurs de détection ne comportent ni caméra ni micro, et n'enregistrent ni son ni image. La vidéoconsultation sur tablette se fait uniquement avec l'accord de la personne. On entre au domicile seulement avec le consentement de la personne."],
   ["La transparence sur les limites", "Le projet n'est ni un service médical ni un service d'urgence; les technologies peuvent faillir, et l'entente le dit clairement."],
   ["Des données protégées", "L'accès aux renseignements de santé est limité aux personnes autorisées. Toute analyse se fait sur des données anonymisées. Les fournisseurs technologiques sont tenus par contrat à des règles strictes sur les données de santé."],
   ["Le respect de l'autonomie, de la dignité et des choix", "de la personne, écrit noir sur blanc dans l'entente."],
@@ -414,20 +454,22 @@ export const COMPETITORS = {
     { family: "Recherche et projets pilotes", who: "SUSTAIN, COMFORTage, Lab. Domus, CCEG", v: [1, 1, 0, 1] },
     { family: "Technologie et soins privés", who: "Equinoxe LifeCare", v: [2, 1, 2, 1] },
     { family: "Statut quo", who: "Services publics fragmentés (SAD, CLSC)", v: [0, 1, 1, 0] },
-    { family: "LUCE-RPA", who: "Démonstration de 18 mois, 50 participants, Lanaudière", v: [2, 2, 2, 2], highlight: true },
+    { family: "RPA à la maison", who: "Démonstration, 50 participants, Lanaudière", v: [2, 2, 2, 2], highlight: true },
   ],
 };
 
 export const PARTNERS = [
   { name: "Fondation Famille Bordeleau", logo: "fondation", text: "Maître d'œuvre; offre le service gratuitement aux participants" },
   { name: "Caisse Desjardins de Joliette et du Centre de Lanaudière", logo: "desjardins", text: "500 000 $, soit 100 000 $ par année pendant cinq ans" },
+  { name: "Vidéotron", logo: "videotron", text: "Matériel technologique et communications" },
   { name: "Habitations Bordeleau", logo: "bordeleau", text: "Expertise en résidence pour aînés, équipes cliniques et modèle de services" },
   { name: "Centre d'expertise SilverTech", logo: "silvertech", text: "Évaluation indépendante, choix et intégration des technologies, protocoles et mesure des résultats" },
-  { name: "Virtuose Technologies et LivingSafe", logo: "virtuose", logo2: "livingsafe", text: "Partenaires technologiques de la phase 1" },
+  { name: "Virtuose Technologies", logo: "virtuose", text: "Partenaire technologique" },
+  { name: "LivingSafe", logo: "livingsafe", text: "Partenaire technologique" },
 ];
 
 export const ROADMAP = [
-  { phase: 1, theme: "Sûreté et sécurité", text: "Détection des chutes, surveillance des habitudes de vie, alertes et réponse rapide", status: "En cours depuis mars 2026", year: "2026" },
+  { phase: 1, theme: "Sûreté et sécurité", text: "Détection des chutes, surveillance des habitudes de vie, alertes et réponse rapide", status: "", year: "En cours" },
   { phase: 2, theme: "Communication, communauté et loisirs", text: "Un outil qui permet aux proches aidants de communiquer avec la personne; qui qualifie et centralise les services à domicile (ménage, aide à l'hygiène, entretien du terrain); qui rend accessible l'offre de loisirs de la région et favorise les liens entre aînés selon leurs intérêts", status: "", year: "2027" },
   { phase: 3, theme: "Santé physique et émotionnelle", text: "Suivi des données biométriques et comportementales, en lien avec le dossier de santé, et analyse personnalisée pour prévenir plutôt que guérir", status: "", year: "2028" },
 ];
@@ -436,8 +478,6 @@ export const RESEARCH_QUESTIONS = [
   "Le modèle prolonge-t-il le maintien à domicile?",
   "Réduit-il les visites à l'urgence?",
   "Réduit-il le fardeau des proches aidants?",
-  "LivingSafe : réduit-on le délai d'intervention après une chute?",
-  "Virtuose : parvient-on à détecter plus tôt une détérioration de l'état de santé et à prévenir les complications?",
 ];
 
 export const INDICATORS = [
@@ -452,6 +492,7 @@ export const LEARNINGS = [
   ["La complexité dépasse ce qu'on peut prévoir.", "Malgré une préparation rigoureuse, un projet qui conjugue participants, proches, équipes cliniques et plusieurs fournisseurs comporte une part d'imprévisible. C'est une donnée du modèle, pas un accident."],
   ["Il existe un écart entre la promesse et la réalité actuelle des technologies.", "Certaines sont encore en développement. L'évaluation en conditions réelles est justement là pour le mesurer, et pour aider les entreprises à combler cet écart."],
   ["L'engagement dans la durée est un défi en soi.", "Les outils de suivi à distance ont surtout fait leurs preuves sur de courtes périodes, après une chirurgie par exemple. Maintenir la participation des aînés sur des mois et des années demande autre chose : du sens, de la relation et une technologie qui se fait oublier."],
+  ["Les ententes avec les fournisseurs se construisent en marchant.", "Une technologie est déjà en service auprès des participants alors que son contrat n'est pas encore signé; une entente provisoire sur le traitement des données est en préparation. Les premières négociations ont aussi montré que notre gabarit de contrat-cadre doit être revu : une version 2 sera proposée à tous les fournisseurs, avec des canaux de soutien et des responsabilités mieux définis."],
 ];
 
 export const ADVISORY_QUESTIONS = [
@@ -461,9 +502,16 @@ export const ADVISORY_QUESTIONS = [
   "Quelles conditions faudrait-il réunir pour que ce modèle inspire une politique publique?",
 ];
 
-export const BENCHMARK = [
-  { org: "CABHI (Toronto, 2015)", nature: "Accélérateur OBNL hébergé par Baycrest; financement public et philanthropique", learn: "Effet de levier : 185 M$ investis, 610 M$ de financement de suivi; 528 projets", extra: "Un service d'évaluation facturé, une classification propre, une spécialisation en RPA privées" },
-  { org: "Vilans (Pays-Bas, 2006)", nature: "Centre national de connaissance en soins de longue durée; financé par le ministère de la Santé", learn: "Cadre d'évaluation de la valeur en 14 étapes avec décision go/no-go", extra: "Un accompagnement commercial des entreprises" },
-  { org: "LiCalab (Belgique, 2012)", nature: "Laboratoire vivant universitaire; financé par projets européens", learn: "Panel d'environ 1 000 citoyens et 500 professionnels", extra: "Un modèle économique moins dépendant des projets" },
-  { org: "CIRris (Québec)", nature: "Centre de recherche public", learn: "Validation en milieu réel, dont la télésurveillance à domicile", extra: "Un service commercial centré sur les RPA privées" },
+/** Annexes : versions complètes en ligne, protégées par un mot de passe distinct (voir worker/index.ts). */
+export const ANNEXES = [
+  { id: "annexe-a", letter: "A", title: "Le modèle SilverTech", pages: 24, url: "https://claude.ai/artifact/TMxkLaqZZpFfFbTAhLEPmV",
+    text: "Les 9 dimensions de l'échelle TRL, le parcours d'évaluation et les travaux d'Innovitech." },
+  { id: "annexe-b", letter: "B", title: "L'étalonnage", pages: 26, url: "https://claude.ai/artifact/C9s4Frg5p4CFBbE33NQXAk",
+    text: "Les 10 modèles retenus et ce qu'on peut en apprendre." },
+  { id: "annexe-c", letter: "C", title: "Cahier de jeux de la maturité organisationnelle à innover", pages: 32, url: "https://claude.ai/artifact/3XBDjxjv5dKYbWeN6vEqQn",
+    text: "L'outil d'Innovitech pour évaluer, de façon continue, la capacité et la maturité à innover de SilverTech et bâtir une feuille de route évolutive. Il repose sur 12 leviers d'innovation regroupés en 4 axes : définir l'ambition; gérer le portefeuille d'innovation; concevoir et passer l'innovation à l'échelle; catalyseurs et capacités habilitantes. Chaque levier est évalué par l'équipe de direction sur une échelle à 5 niveaux (novice, sporadique, compétent, avancé, excellent). Cadre adapté notamment des « Eight Essentials of Innovation » de McKinsey." },
+  { id: "annexe-d", letter: "D", title: "Besoins prioritaires cliniques", pages: 7, url: "https://claude.ai/artifact/5i3GNzupBdP6hEQBG5YQPq",
+    text: "La synthèse des entrevues menées auprès des équipes cliniques (PAB, infirmière auxiliaire, direction clinique) et de résidents. Besoins principaux : la sécurité des résidents (prévention des chutes, détection rapide des urgences, erreurs de médication, errance); la réduction des tâches administratives et des doubles saisies; l'interopérabilité des logiciels en place (Symo, XPill Pro, Virtuose, Living Safe); l'organisation du travail et les communications entre quarts, intervenants et familles. Les résidents veulent des technologies utiles, simples et rassurantes, qui préservent le contact humain." },
+  { id: "annexe-e", letter: "E", title: "Capacités d'affaires", pages: 3, url: "https://claude.ai/artifact/Kik6A5sRbdefuwgzDHF6ZL",
+    text: "Une capacité d'affaires est la capacité d'une organisation à livrer un produit ou un service. Elle combine quatre dimensions : des personnes, des processus, des outils et des données. La carte des capacités de SilverTech montre qu'un grand nombre de capacités doivent être développées rapidement, en priorité celles de gouvernance et de stratégie (conseil d'administration et comité aviseur, vision et stratégie, modèle d'affaires, éthique et conformité, risques, financement, reddition de compte)." },
 ];

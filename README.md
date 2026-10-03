@@ -25,10 +25,7 @@ Tout le texte est séparé de la mise en page.
 | Couleurs et mise en page | `src/styles.css` (variables en haut du fichier) |
 | Images | `public/img/` (WebP) |
 
-Points à compléter avant l'envoi :
-
-- **Points à adresser** (section « Avant la rencontre ») : le gabarit d'origine contenait du faux texte, remplacé ici par un encart à compléter dans `src/sections/Before.tsx`.
-- **Annexe C** : document d'adhésion des Innovateurs (emplacement vide), dans `src/sections/Annexes.tsx`.
+Le contenu correspond à la version finale du cahier (version du 2 octobre 2026). Les annexes A à E renvoient vers leurs versions complètes en ligne (liens dans `ANNEXES`, `src/content.ts`).
 
 ## Fonctions interactives
 
@@ -55,13 +52,14 @@ Réglages dans l'assistant « Importer un dépôt » :
 Après le premier déploiement :
 
 1. Ouvrir le Worker, **Paramètres, Variables et secrets**, puis **Ajouter** une variable de type **Secret** nommée `CAHIER_PASSWORD`, avec le mot de passe à partager. Déployer de nouveau si Cloudflare le demande.
+   Ajouter de la même façon le secret **`ANNEXES_PASSWORD`** : le mot de passe des annexes en ligne, affiché dans la section Annexes aux seules personnes connectées. Il n'est pas écrit dans le code. Sans ce secret, la page indique simplement d'utiliser le mot de passe transmis avec le cahier.
 2. Pour changer le mot de passe, modifier ce secret : toutes les sessions ouvertes sont alors invalidées.
 
 Sans la variable `CAHIER_PASSWORD`, le site refuse tout accès (échec fermé).
 
 Recommandé : dans Cloudflare, **Sécurité, WAF, Règles de limitation de débit**, ajouter une règle limitant les tentatives sur le chemin `/__login`.
 
-Essai local du Worker : créer un fichier `.dev.vars` contenant `CAHIER_PASSWORD=essai`, puis `npm run build && npx wrangler dev`.
+Essai local du Worker : créer un fichier `.dev.vars` contenant `CAHIER_PASSWORD=essai` (et au besoin `ANNEXES_PASSWORD=...`), puis `npm run build && npx wrangler dev`.
 
 Alternative à un mot de passe unique : **Cloudflare Access** (Zero Trust) avec code par courriel pour une liste de participants nommés. Dans ce cas, `run_worker_first` et le Worker peuvent être retirés de `wrangler.toml`.
 

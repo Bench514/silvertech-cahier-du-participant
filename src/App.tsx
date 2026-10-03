@@ -7,6 +7,7 @@ import Section1 from "./sections/Section1";
 import Section2 from "./sections/Section2";
 import Annexes from "./sections/Annexes";
 import { useEffect } from "react";
+import { META } from "./content";
 
 function Shell() {
   const { active, progress } = useScrollSpy();
@@ -23,8 +24,8 @@ function Shell() {
         <Section2 />
         <Annexes />
         <footer className="foot">
-          <span>Cahier du participant · Conseil d'administration · 5 octobre 2026</span>
-          <span className="conf">Confidentiel · pour discussion seulement</span>
+          <span>{META.footer}</span>
+          <span className="conf">{META.confidential}</span>
         </footer>
       </main>
       <NotesPanel />

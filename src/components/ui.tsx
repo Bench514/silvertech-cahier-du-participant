@@ -90,26 +90,31 @@ export function Sub({ id, num, title, children, lead }: { id: string; num: strin
   );
 }
 
-/** Question ou décision, avec mise en carnet. */
-export function Ask({ id, section, kind = "question", title, children, text }: { id: string; section: string; kind?: "question" | "decision" | "reflexion"; title: string; children: ReactNode; text: string }) {
+/** Bloc « Pour discussion » : chaque question peut être gardée dans le carnet. */
+export function Discuss({ id, section, title = "Pour discussion", heading, questions, children }: { id: string; section: string; title?: string; heading?: string; questions: string[]; children?: ReactNode }) {
   const { toggleQuestion, isSaved } = useNotes();
-  const saved = isSaved(id);
   return (
-    <Reveal className={`ask ask-${kind}`}>
-      <div className="ask-icon" aria-hidden>{kind === "decision" ? "✓" : "?"}</div>
-      <div className="ask-body">
-        <div className="ask-title">{title}</div>
-        <div className="ask-text">{children}</div>
+    <Reveal className="discuss">
+      <div className="discuss-icon" aria-hidden>?</div>
+      <div className="discuss-body">
+        <div className="discuss-title">{title}</div>
+        {heading && <h4 className="discuss-heading">{heading}</h4>}
+        <ul className="discuss-list">
+          {questions.map((q, i) => {
+            const qid = `${id}-${i}`;
+            const saved = isSaved(qid);
+            return (
+              <li key={qid}>
+                <p>{q}</p>
+                <button className={`keep ${saved ? "on" : ""}`} aria-pressed={saved} onClick={() => toggleQuestion({ id: qid, text: q, section })}>
+                  {saved ? "✓ Dans mon carnet" : "+ Garder pour la discussion"}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        {children && <div className="discuss-more">{children}</div>}
       </div>
-      {kind !== "decision" ? (
-        <button className={`ask-save ${saved ? "on" : ""}`} aria-pressed={saved} onClick={() => toggleQuestion({ id, text, section })}>
-          {saved ? "Dans mon carnet" : "Garder pour la discussion"}
-        </button>
-      ) : (
-        <button className={`ask-save ${saved ? "on" : ""}`} aria-pressed={saved} onClick={() => toggleQuestion({ id, text: `Décision demandée : ${text}`, section })}>
-          {saved ? "Dans mon carnet" : "Garder pour la discussion"}
-        </button>
-      )}
     </Reveal>
   );
 }

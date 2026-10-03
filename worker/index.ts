@@ -8,6 +8,8 @@
 
 interface Env {
   CAHIER_PASSWORD?: string;
+  /** Mot de passe des annexes en ligne, affiché aux personnes connectées. Facultatif. */
+  ANNEXES_PASSWORD?: string;
   ASSETS: Fetcher;
 }
 
@@ -121,6 +123,9 @@ export default {
 
   const cookie = readCookie(request, COOKIE);
   if (cookie && safeEqual(cookie, expected)) {
+    if (url.pathname === "/__annexes-password") {
+      return withSecurity(Response.json({ password: env.ANNEXES_PASSWORD ?? "" }), { "Cache-Control": "no-store" });
+    }
     return withSecurity(await env.ASSETS.fetch(request), { "Cache-Control": "private, no-cache" });
   }
 

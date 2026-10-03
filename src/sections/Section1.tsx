@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
-import { Accordion, Ask, Counter, Drawer, Reveal, Sub, img, useInView } from "../components/ui";
+import { Accordion, Counter, Discuss, Drawer, Reveal, Sub, img, useInView } from "../components/ui";
 import VideoFacade from "../components/VideoFacade";
 import { goTo } from "../components/Nav";
 import {
-  CONVERSION, DIMENSIONS, FAMILIES, FICHES, FOUR_P, IN_CONSTRUCTION, OFFERS, PIONNIERS, PIPELINE, TEAM, TRL_PHASES, VALUES, WHY_STRUCTURE, type Status,
+  CONVERSION, DIMENSIONS, FAMILIES, MEMBERSHIP_QUESTIONS, FICHES, FOUR_P, IN_CONSTRUCTION, OFFERS, PIONNIERS, PIPELINE, TEAM, TRL_PHASES, VALUES, WHY_STRUCTURE, type Status,
 } from "../content";
 
 function ChapterHead({ id, n, label, title, children }: { id: string; n: string; label: string; title: string; children: React.ReactNode }) {
@@ -45,19 +45,19 @@ function Problem() {
       <div className={`gap-grid ${hover ?? ""}`}>
         <Reveal className="gap-card a" style={{}}>
           <div onMouseEnter={() => setHover("a")} onMouseLeave={() => setHover(null)} tabIndex={0} onFocus={() => setHover("a")} onBlur={() => setHover(null)}>
-            <span className="tag">Entreprises technologiques</span>
-            <h4>Passer de l'innovation à l'adoption</h4>
-            <p>Les PME développant des technologies pour les aînés peinent souvent à passer de l'innovation à l'adoption. L'accès limité à des milieux réels complique la validation de leurs solutions, leur adaptation aux réalités des RPA et la démonstration de leur valeur.</p>
-            <p>Elles ont besoin d'un environnement structuré d'évaluation et d'accompagnement pour tester, adapter et démontrer leurs technologies afin d'en accélérer l'adoption et le déploiement à grande échelle.</p>
+            <span className="tag">Milieux de vie</span>
+            <h4>Choisir et intégrer les bonnes solutions</h4>
+            <p>Les milieux de vie privés pour aînés doivent répondre à des besoins croissants de sécurité, d'autonomie, de qualité des soins et d'efficience, dans un contexte de pénurie de main-d'œuvre et de multiplication des technologies.</p>
+            <p>Or, ils disposent de peu de moyens pour déterminer quelles solutions répondent réellement à leurs besoins, évaluer leur valeur en conditions réelles et les intégrer efficacement à leurs pratiques et systèmes existants.</p>
           </div>
         </Reveal>
         <div className="gap-mid" aria-hidden><span>?</span></div>
         <Reveal className="gap-card b" delay={120}>
           <div onMouseEnter={() => setHover("b")} onMouseLeave={() => setHover(null)} tabIndex={0} onFocus={() => setHover("b")} onBlur={() => setHover(null)}>
-            <span className="tag">Milieux de vie pour aînés</span>
-            <h4>Choisir et intégrer les bonnes solutions</h4>
-            <p>Les milieux de vie privés pour aînés doivent répondre à des besoins croissants de sécurité, d'autonomie, de qualité des soins et d'efficience, dans un contexte de pénurie de main-d'œuvre et de multiplication des technologies.</p>
-            <p>Or, ils disposent de peu de moyens pour déterminer quelles solutions répondent réellement à leurs besoins, évaluer leur valeur en conditions réelles et les intégrer efficacement à leurs pratiques et systèmes existants.</p>
+            <span className="tag">Entreprises technologiques</span>
+            <h4>Passer de l'innovation à l'adoption</h4>
+            <p>Les PME développant des technologies pour les aînés peinent souvent à passer de l'innovation à l'adoption. L'accès limité à des milieux réels complique la validation de leurs solutions, leur adaptation aux réalités des RPA et la démonstration de leur valeur.</p>
+            <p>Elles ont besoin d'un environnement structuré d'évaluation et d'accompagnement pour tester, adapter et démontrer leurs technologies afin d'en accélérer l'adoption et le déploiement à grande échelle.</p>
           </div>
         </Reveal>
       </div>
@@ -85,7 +85,7 @@ function Benchmark() {
               <b><Counter to={f.n} duration={1000 + i * 300} /></b><span>{f.label}</span>
             </div>
           ))}
-          <p className="funnel-note">Au Québec, ailleurs au Canada, en Europe et aux États-Unis. Analyse approfondie : CABHI (Toronto), Vilans (Pays-Bas), LiCalab (Belgique) et CIRris (Québec).</p>
+          <p className="funnel-note">Innovitech a recensé 63 organisations, dont 22 centres d'évaluation; elle en a retenu 10 et en a analysé 4 en profondeur. Ces quatre modèles sont CABHI (Toronto), Vilans (Pays-Bas), LiCalab (Belgique) et CIRris (Québec).</p>
         </div>
         <div className="bench-claim">
           <span className="tag light">Sur 63 organisations comparables</span>
@@ -109,9 +109,9 @@ function Foundations() {
   return (
     <Sub id="s1-3" num="1.3" title="Nos fondements">
       <div className="found">
-        <Reveal className="found-card"><span className="tag">Mission</span><p>Évaluer, recommander et faciliter l'adoption des technologies dans les milieux de vie pour aîné.e.s afin de transformer la manière de vieillir chez soi, en RPA comme à domicile.</p></Reveal>
+        <Reveal className="found-card"><span className="tag">Mission</span><p>Faciliter l'adoption des technologies dans les milieux de vie pour aîné·e·s afin de transformer la manière de vieillir chez soi, en RPA comme à domicile.</p></Reveal>
         <Reveal className="found-card" delay={100}><span className="tag">Vision</span><p>Devenir le centre de référence canadien pour l'identification des besoins, l'évaluation et la recommandation de technologies et de modèles innovants favorisant l'autonomie, la sécurité et la qualité de vie des personnes aînées.</p></Reveal>
-        <Reveal className="found-card wide" delay={200}><span className="tag">Proposition de valeur</span><p>SilverTech agit comme tiers neutre entre les entreprises technologiques et les RPA : il évalue les solutions en conditions réelles, les aligne sur les besoins des aînés et des milieux de vie, et accompagne leur intégration jusqu'à leur adoption.</p></Reveal>
+        <Reveal className="found-card wide" delay={200}><span className="tag">Proposition de valeur</span><p>SilverTech agit comme tiers neutre entre les entreprises technologiques et les milieux de vie : il évalue les solutions en conditions réelles, les aligne sur les besoins des aînés, et accompagne leur intégration jusqu'à leur adoption.</p></Reveal>
       </div>
       <Reveal className="values">
         <h4 className="h4">Valeurs</h4>
@@ -134,11 +134,14 @@ function Ambition() {
         <span className="tag light">Notre étoile du nord</span>
         <p className="big-quote">Faire passer la santé globale des aînés du réactif au préventif, pour que vieillir chez soi devienne la norme.</p>
       </Reveal>
-      <div className="split">
+      <div>
         <Reveal className="prose">
           <p>Nos systèmes de santé ont été conçus pour intervenir une fois le problème survenu. Le vieillissement appelle une santé personnalisée, prédictive, préventive et participative, qui prend soin du bien-être avant de traiter la maladie. Avec les aînés, leurs proches, les milieux de vie et les innovateurs, SilverTech valide sur le terrain les technologies et les modèles de services qui permettront de vieillir chez soi plus longtemps, en sécurité et en confiance.</p>
         </Reveal>
-        <Reveal className="photo tall" delay={150}><img src={img("portrait-ainee")} alt="Portrait d'une aînée" loading="lazy" /></Reveal>
+      </div>
+      <div className="duo">
+        <Reveal className="photo"><img src={img("capteur-nuit")} alt="Une aînée dort pendant qu'un capteur discret veille" loading="lazy" /></Reveal>
+        <Reveal className="photo" delay={120}><img src={img("montre-connectee")} alt="Une montre connectée au poignet d'une personne aînée" loading="lazy" /></Reveal>
       </div>
       <Reveal>
         <h4 className="h4">L'approche 4P en santé</h4>
@@ -155,9 +158,7 @@ function Ambition() {
           </Reveal>
         ))}
       </div>
-      <Ask id="q-prevention" section="1.4 Notre ambition d'impact" title="Question pour le CA & comité aviseur" text="Selon des sources fiables, le gouvernement rendra bientôt disponibles des enveloppes budgétaires en prévention. Quelle approche devrions-nous adopter pour faciliter le financement de la transformation numérique des RPA : subventions, partenariats ou autre avenue?">
-        Selon des sources fiables, le gouvernement rendra bientôt disponibles des enveloppes budgétaires en prévention. Quelle approche devrions-nous adopter pour faciliter le financement de la transformation numérique des RPA : subventions, partenariats ou autre avenue?
-      </Ask>
+      <Discuss id="q-prevention" section="1.4 Notre ambition d'impact" questions={["Selon des sources fiables, le gouvernement rendra bientôt disponibles des enveloppes budgétaires en prévention. Quelle approche devrions-nous adopter pour faciliter le financement de la transformation numérique des RPA : subventions, partenariats ou autre avenue?"]} />
     </Sub>
   );
 }
@@ -231,14 +232,10 @@ function Model() {
         <p className="muted small">Le TRL (Technology Readiness Level) mesure, sur une échelle de 1 à 9, à quel point une technologie est prête à être utilisée en contexte réel.</p>
       </Reveal>
 
-      <div className="principles">
-        <Reveal className="principle"><span>1</span><p>SilverTech a besoin d'un laboratoire pour évaluer les technologies avant de les déployer chez les primo-adoptants.</p></Reveal>
-        <Reveal className="principle" delay={120}><span>2</span><p>Ses revenus proviennent d'honoraires professionnels et d'adhésions, <b>jamais d'un pourcentage des ventes</b>, afin de préserver sa neutralité.</p></Reveal>
-      </div>
-
       <Reveal>
         <h4 className="h4">L'échelle d'évaluation</h4>
-        <p className="muted">Les cadres existants mesurent surtout la performance clinique. Celui de SilverTech, inspiré de l'aérospatiale, mesure la réduction du risque jusqu'à un niveau acceptable pour une RPA. Il croise 9 niveaux de maturité et 9 dimensions, de la valeur pour les participants au risque légal (<a href="#annexe-a" onClick={(e) => { e.preventDefault(); goTo("annexe-a"); }}>détail en annexe A</a>).</p>
+        <p className="muted">Les cadres existants mesurent surtout la performance clinique. Celui de SilverTech, inspiré de l'aérospatiale, mesure la réduction du risque jusqu'à un niveau acceptable pour une RPA. Il croise 9 niveaux de maturité et 9 dimensions, de la valeur pour les participants au risque légal.</p>
+        <h4 className="h4">Les 9 dimensions évaluées</h4>
         <p className="muted">L'échelle d'évaluation découle de ces questions : des exigences à rencontrer pour chaque dimension à chaque niveau de TRL.</p>
       </Reveal>
       <ol className="dims">
@@ -405,10 +402,12 @@ function Membership() {
         ))}
       </ol>
 
-      <Ask id="d-membership" section="1.8 L'offre de membership" kind="decision" title="Décision demandée" text="Endosser les trois familles de membres, la grille de cotisations et le statut de Pionnier, et mandater le conseil d'administration pour les inscrire aux règlements généraux.">
-        Endosser les trois familles de membres, la grille de cotisations et le statut de Pionnier, et mandater le conseil d'administration pour les inscrire aux règlements généraux.
-        <small>Un exemple du document d'adhésion remis avec la facture aux membres figure en <a href="#annexe-c" onClick={(e) => { e.preventDefault(); goTo("annexe-c"); }}>annexe C</a>. L'adhésion ne garantit ni la sélection d'un projet, ni une implantation, ni une classification.</small>
-      </Ask>
+      <Reveal className="neutral">
+        <h4>Et la neutralité face aux Fondateurs?</h4>
+        <p>Les Habitations Bordeleau et la Fondation Famille Bordeleau sont à la fois Fondateurs et principaux milieux preneurs du Centre. Pour que ce double rôle ne compromette jamais l'indépendance de l'évaluation, nous proposons d'adopter une politique sur les conflits d'intérêts.</p>
+      </Reveal>
+      <Discuss id="q-membership" section="1.8 L'offre de membership" questions={MEMBERSHIP_QUESTIONS} />
+      <p className="fine-note">L'adhésion ne garantit ni la sélection d'un projet, ni une implantation, ni une classification.</p>
     </Sub>
   );
 }
